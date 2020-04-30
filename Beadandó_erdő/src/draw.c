@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <math.h>
 
-double skybox_size = 200;
+double skybox_size = 1000;
 GLuint displayList1;
 double rotateAngle = 0;
 
@@ -207,11 +207,15 @@ void draw_skybox_top(Skybox skybox) {
 void draw_environment(World world, Rotate* rotate) {
 	glEnable(GL_TEXTURE_2D);
    
+		
    GLfloat material_ambient[] = {0.9, 0.9, 0.9, 1};
    GLfloat material_ambient_2[] = {0.1, 0.3, 0.6, 1};
 	displayList1 = glGenLists(1);
 	glNewList(displayList1, GL_COMPILE);
 	
+	
+       
+		
 	
 		glPushMatrix();
 		glTranslatef(0, 150, 50);
@@ -294,24 +298,18 @@ void draw_grandbird(World world)
 {
 
 			glPushMatrix();
-			
+				
+
 				glCallList(displayList1);
 			
 			glPopMatrix();
 }
 
-void draw_teapot_for_light(){
-    glPushMatrix();
-        glTranslatef(400, 10,400);
-        glScalef(10, 10, 10);
-        glutSolidTeapot(1.0);
-    glPopMatrix();
-}
 
 
 void draw_entities(World world) {
 	glEnable(GL_TEXTURE_2D);
-    	draw_teapot_for_light();
+    	
 	draw_grandbird(world);
 
 	
