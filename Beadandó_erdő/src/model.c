@@ -1,7 +1,7 @@
 /*
  * model.c
  *
- *      Készítette: Bodnár Márk Ármin
+ *   Created by: Bodnár Márk Ármin	
  */
 #include "model.h"
 #include <stdio.h>
@@ -9,7 +9,6 @@
 #include <string.h>
 
 #define LINE_BUFFER_SIZE 1024
-
 
 
 int count_tokens(const char* text)
@@ -501,32 +500,30 @@ void scale_model(struct Model* model, double sx, double sy, double sz)
 
 void init_entities(World* world) {
 	
-	// Madár
-	load_model("objects//madarka.obj", &world->bird.model);
+	//Bird
+	load_model("objects//bird.obj", &world->bird.model);
     
-	//Kiskacsa
-    load_model("objects//kiskacsa.obj", &world->duck.model);
-	world->duck.texture = load_texture("textures//kiskacsa.jpg");
+	//Duckling
+    load_model("objects//duckling.obj", &world->duckling.model);
+	world->duckling.texture = load_texture("textures//duckling.jpg");
+
 	
-	//Kacsa
-	load_model("objects//kacsa.obj", &world->duck2.model);
-	world->duck2.texture = load_texture("textures//kacsa.jpg");
+	//Mallard
+	load_model("objects//mallard.obj", &world->mallard.model);
+	world->mallard.texture = load_texture("textures//mallard.jpg");
 	
-	//Őz
-	load_model("objects//ozike.obj", &world->deer.model);
-	world->deer.texture = load_texture("textures//ozike.jpg");
+	//Deer
+	load_model("objects//deer.obj", &world->deer.model);
+	world->deer.texture = load_texture("textures//deer.jpg");
 	
-	//Róka
-	load_model("objects//roka.obj", &world->fox.model);
-	world->fox.texture = load_texture("textures//roka.jpg");
+	//Fox
+	load_model("objects//fox.obj", &world->fox.model);
+	world->fox.texture = load_texture("textures//fox.jpg");
 	
-	//Talaj
-	world->ground = load_texture("textures//fuu.jpg");
+	//Ground
+	world->ground = load_texture("textures//grass.jpg");
 	load_skybox(&world->skybox);
 	
-	
-
-
 }
 
 

@@ -1,17 +1,16 @@
 /*
  * draw.c
  *
- *   Készítette: Bodnár Márk Ármin
+ *   Created by: Bodnár Márk Ármin	
  */
 #include "draw.h"
 #include <GL/glut.h>
 #include <stdio.h>
 #include <math.h>
 
-double skybox_size = 1000;
+double skybox_size = 950;
 GLuint displayList1;
 double rotateAngle = 0;
-
 
 void draw_quads(const struct Model* model)
 {
@@ -207,75 +206,73 @@ void draw_skybox_top(Skybox skybox) {
 void draw_environment(World world, Rotate* rotate) {
 	glEnable(GL_TEXTURE_2D);
    
-		
    GLfloat material_ambient[] = {0.9, 0.9, 0.9, 1};
    GLfloat material_ambient_2[] = {0.1, 0.3, 0.6, 1};
 	displayList1 = glGenLists(1);
 	glNewList(displayList1, GL_COMPILE);
 	
-	
-       
-		
-	
+//Bird 	
 		glPushMatrix();
-		glTranslatef(0, 150, 50);
+		glTranslatef(0, 300, 50);
 		glMaterialfv(GL_FRONT, GL_AMBIENT, material_ambient_2);
 		glBindTexture(GL_TEXTURE_2D, world.bird.texture);
 		glRotatef(rotate->valueOfRotationForPendulum, 0, 0, -1);
 		glScalef(300.0f, 300.0f, 300.0f);
 		draw_model(&world.bird.model);
 		glPopMatrix();
+		
 	glEndList();
 
+//Duckling
 		glPushMatrix();
-			glTranslatef(-60, 0, -30);
+			glTranslatef(-600, 0, -30);
 			glMaterialfv(GL_FRONT, GL_AMBIENT, material_ambient);
 			
-			glBindTexture(GL_TEXTURE_2D, world.duck.texture);
-glScalef(1.4f, 1.4f, 1.4f);			
-			draw_model(&world.duck.model);	
+			glBindTexture(GL_TEXTURE_2D, world.duckling.texture);
+			glScalef(1.4f, 1.4f, 1.4f);			
+			draw_model(&world.duckling.model);	
 	
 		glPopMatrix();
 		
+//Mallard		
 		glPushMatrix();
-			glTranslatef(-80, 0, -20);
+			glTranslatef(-600, 0, -100);
 			glMaterialfv(GL_FRONT, GL_AMBIENT, material_ambient);
 			
-			glBindTexture(GL_TEXTURE_2D, world.duck2.texture);
-glScalef(0.8f, 0.8f, 0.8f);			
-			draw_model(&world.duck2.model);	
+			glBindTexture(GL_TEXTURE_2D, world.mallard.texture);
+			glScalef(0.8f, 0.8f, 0.8f);			
+			draw_model(&world.mallard.model);	
 	
 		glPopMatrix();
 		
+//Deer		
 		glPushMatrix();
 			glTranslatef(0, 0, 100);
 			glMaterialfv(GL_FRONT, GL_AMBIENT, material_ambient);
 			
 			glBindTexture(GL_TEXTURE_2D, world.deer.texture);
-glScalef(2.0f, 2.0f, 2.0f);			
+			glScalef(2.0f, 2.0f, 2.0f);			
 			draw_model(&world.deer.model);	
 	
 		glPopMatrix();
 		
+//Fox		
 		glPushMatrix();
-			glTranslatef(80, 0, -100);
+			glTranslatef(200, 0, -100);
 			glMaterialfv(GL_FRONT, GL_AMBIENT, material_ambient);
 			
 			glBindTexture(GL_TEXTURE_2D, world.fox.texture);
-glScalef(0.6f, 0.6f, 0.6f);			
+			glScalef(0.6f, 0.6f, 0.6f);			
 			draw_model(&world.fox.model);	
 	
 		glPopMatrix();
- 
+		
 	GLfloat zeros[] = { 0, 0, 0 };
 	GLfloat ones[] = { 1, 1, 1 };
-	
-	
+		
 	glMaterialfv(GL_FRONT, GL_DIFFUSE, zeros);
 	glMaterialfv(GL_FRONT, GL_AMBIENT, ones);
 	draw_ground(world.ground);
-
-
 
 	draw_skybox_left(world.skybox);
 	draw_skybox_right(world.skybox);
@@ -287,32 +284,26 @@ glScalef(0.6f, 0.6f, 0.6f);
 
 }
 void load_skybox(Skybox* skybox) {
-	skybox->front = load_texture("textures//erdo.jpg");
-	skybox->left = load_texture("textures//erdo.jpg");
-	skybox->right = load_texture("textures//erdo.jpg");
-	skybox->back = load_texture("textures//erdo.jpg");
-	skybox->top = load_texture("textures//egbolt.jpg");
+	skybox->front = load_texture("textures//forrest_side.jpg");
+	skybox->left = load_texture("textures//forrest.jpg");
+	skybox->right = load_texture("textures//forrest.jpg");
+	skybox->back = load_texture("textures//forrest_side.jpg");
+	skybox->top = load_texture("textures//sky.jpg");
 }
 
 void draw_grandbird(World world) 
 {
 
 			glPushMatrix();
-				
-
+			
 				glCallList(displayList1);
 			
 			glPopMatrix();
 }
 
-
-
 void draw_entities(World world) {
 	glEnable(GL_TEXTURE_2D);
-    	
 	draw_grandbird(world);
-
-	
 	glDisable(GL_TEXTURE_2D);
 }
 

@@ -1,14 +1,13 @@
 /*
  * camera.c
  *
- *   Készítette: Bodnár Márk Ármin
+ *   Created by: Bodnár Márk Ármin	
  */
 #include "camera.h"
 #include <GL/glut.h>
 #include <math.h>
-
 #define M_PI 3.14159265358979323846
-#define size 200
+#define size 950
 
 double degree_to_radian(double degree)
 {
