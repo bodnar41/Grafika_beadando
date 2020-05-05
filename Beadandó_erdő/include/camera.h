@@ -1,13 +1,11 @@
 /*
  * camera.h
  *
- *   Készítette: Bodnár Márk Ármin	
+ *   Created by: Bodnár Márk Ármin	
  */
 #ifndef CAMERA_H
 #define CAMERA_H
-
 #include "model.h"
-
 #define CAMERA_SPEED 10.0
 
 struct Camera
@@ -16,7 +14,6 @@ struct Camera
 	struct Vertex pose;
 	struct Vertex prev_position;
 };
-
 
 /*
 * Converts degree to radian

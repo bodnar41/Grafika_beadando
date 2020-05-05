@@ -1,16 +1,13 @@
 /*
  * model.h
  *
- *   Készítette: Bodnár Márk Ármin
+ *   Created by: Bodnár Márk Ármin	
  */
 #ifndef MODEL_H
 #define MODEL_H
-
 #include <stdio.h>
-
 #define TRUE 1
 #define FALSE 0
-
 #define INVALID_VERTEX_INDEX 0
 
 struct TokenArray
@@ -78,16 +75,20 @@ typedef struct {
     Skybox skybox;
     Entity bird;
 	Entity zero;
-    Entity duck;
-	Entity duck2;
+    Entity duckling;
+	Entity mallard;
 	Entity deer;
 	Entity fox;
+	Entity tree1;
+	Entity tree2;
+	Entity tree3;
+	Entity tree4;
+	Entity tree5;
+	Entity tree6;
 	double bird_speed;
     
 
 }World;
-
-
 
 /**
  * Count the tokens in the text.
@@ -238,7 +239,6 @@ void print_bounding_box(const struct Model* model);
  * Scale the loaded model.
  */
 void scale_model(struct Model* model, double sx, double sy, double sz);
-
 
 
 #endif // MODEL_H

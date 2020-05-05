@@ -1,25 +1,19 @@
 /*
  * draw.h
  *
- *   Készítette: Bodnár Márk Ármin
+ *   Created by: Bodnár Márk Ármin	
  */
 #ifndef DRAW_H
 #define DRAW_H
-
 #include "model.h"
-
 #ifndef GL_EXT_texture_edge_clamp
 #define GL_EXT_CLAMP_TO_EDGE                 0x812F
 #endif
 
 
-
 typedef struct {
-
-	
     double valueOfRotationForPendulum;
 	double bird_speed;
-
 }Rotate;
 
 /**
@@ -72,12 +66,10 @@ void draw_environment(World world, Rotate* rotate);
 */
 void load_skybox(Skybox* skybox);
 
-
-void draw_teapot_for_light();
-
 /**
 * Calls draw_windmills and draw_teapot_for_light
 */
 void draw_entities(World world);
+
 #endif // DRAW_H
 
