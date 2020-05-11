@@ -9,6 +9,8 @@
 #include <string.h>
 
 #define LINE_BUFFER_SIZE 1024
+#include <obj/load.h>
+#include <obj/draw.h>
 
 
 int count_tokens(const char* text)
@@ -99,7 +101,7 @@ void free_tokens(struct TokenArray* token_array)
 	free(token_array->tokens);
 }
 
-int load_model(const char* filename, Model* model)
+/*int load_model(const char* filename, Model* model)
 {
     FILE* obj_file = fopen(filename, "r");
     printf("Load model '%s' ...\n", filename);
@@ -115,9 +117,9 @@ int load_model(const char* filename, Model* model)
 	read_elements(obj_file, model);
 
 	return TRUE;
-}
+}*/
 
-void print_model_info(const struct Model* model)
+/*void print_model_info(const struct Model* model)
 {
     printf("Vertices: %d\n", model->n_vertices);
     printf("Texture vertices: %d\n", model->n_texture_vertices);
@@ -125,17 +127,17 @@ void print_model_info(const struct Model* model)
     printf("Triangles: %d\n", model->n_triangles);
     printf("Quads: %d\n", model->n_quads);
 }
-
-void free_model(struct Model* model)
+*/
+/*void free_model(struct Model* model)
 {
     free(model->vertices);
     free(model->texture_vertices);
     free(model->normals);
     free(model->triangles);
     free(model->quads);
-}
+}*/
 
-void count_elements(FILE* file, struct Model* model)
+/*void count_elements(FILE* file, struct Model* model)
 {
     char line[LINE_BUFFER_SIZE];
 
@@ -144,9 +146,9 @@ void count_elements(FILE* file, struct Model* model)
         clear_comment(line);
         count_element_in_line(line, model);
     }
-}
+}*/
 
-void read_elements(FILE* file, struct Model* model)
+/*void read_elements(FILE* file, struct Model* model)
 {
     char line[LINE_BUFFER_SIZE];
 
@@ -161,8 +163,8 @@ void read_elements(FILE* file, struct Model* model)
         read_element_from_line(line, model);
     }
 }
-
-void init_model_counters(Model* model)
+*/
+/*void init_model_counters(Model* model)
 {
     model->n_vertices = 0;
     model->n_texture_vertices = 0;
@@ -170,7 +172,7 @@ void init_model_counters(Model* model)
     model->n_triangles = 0;
     model->n_quads = 0;
 }
-
+*/
 void clear_comment(char* line)
 {
     int i = 0;
@@ -183,7 +185,7 @@ void clear_comment(char* line)
     }
 }
 
-void count_element_in_line(const char* line, Model* model)
+/*void count_element_in_line(const char* line, Model* model)
 {
 	struct TokenArray token_array;
 	char* first_token;
@@ -215,9 +217,9 @@ void count_element_in_line(const char* line, Model* model)
 	}
 
     free_tokens(&token_array);
-}
+}*/
 
-void read_element_from_line(const char* line, Model* model)
+/*void read_element_from_line(const char* line, Model* model)
 {
 	struct TokenArray token_array;
 	char* first_token;
@@ -262,55 +264,55 @@ void read_element_from_line(const char* line, Model* model)
 
 	free_tokens(&token_array);
 }
-
-void create_arrays(struct Model* model)
+*/
+/*void create_arrays(struct Model* model)
 {
     model->vertices = (struct Vertex*)malloc((model->n_vertices + 1) * sizeof(struct Vertex));
     model->texture_vertices = (struct TextureVertex*)malloc((model->n_texture_vertices + 1) * sizeof(struct TextureVertex));
     model->normals = (struct Vertex*)malloc((model->n_normals + 1) * sizeof(struct Vertex));
     model->triangles = (struct Triangle*)malloc(model->n_triangles * sizeof(struct Triangle));
     model->quads = (struct Quad*)malloc(model->n_quads * sizeof(struct Quad));
-}
+}*/
 
-void read_vertex(const struct TokenArray* token_array, struct Vertex* vertex)
+/*void read_vertex(const struct TokenArray* token_array, struct Vertex* vertex)
 {
     vertex->x = atof(token_array->tokens[1]);
     vertex->y = atof(token_array->tokens[2]);
     vertex->z = atof(token_array->tokens[3]);
-}
+}*/
 
-void read_texture_vertex(const struct TokenArray* token_array, struct TextureVertex* texture_vertex)
+/*void read_texture_vertex(const struct TokenArray* token_array, struct TextureVertex* texture_vertex)
 {
     texture_vertex->u = atof(token_array->tokens[1]);
     texture_vertex->v = atof(token_array->tokens[2]);
-}
+}*/
 
-void read_normal(const struct TokenArray* token_array, struct Vertex* normal)
+/*void read_normal(const struct TokenArray* token_array, struct Vertex* normal)
 {
     normal->x = atof(token_array->tokens[1]);
     normal->y = atof(token_array->tokens[2]);
     normal->z = atof(token_array->tokens[3]);
 }
-
-void read_triangle(const struct TokenArray* token_array, struct Triangle* triangle)
+*/
+/*void read_triangle(const struct TokenArray* token_array, struct Triangle* triangle)
 {
     int i;
 
     for (i = 0; i < 3; ++i) {
         read_face_point(token_array->tokens[i + 1], &triangle->points[i]);
     }
-}
+}*/
 
-void read_quad(const struct TokenArray* token_array, struct Quad* quad)
+/*void read_quad(const struct TokenArray* token_array, struct Quad* quad)
 {
     int i;
 
     for (i = 0; i < 4; ++i) {
         read_face_point(token_array->tokens[i + 1], &quad->points[i]);
     }
-}
+}*/
 
-void read_face_point(const char* text, struct FacePoint* face_point)
+/*void read_face_point(const char* text, struct FacePoint* face_point)
 {
     int delimiter_count;
     const char* token;
@@ -340,7 +342,7 @@ void read_face_point(const char* text, struct FacePoint* face_point)
     else {
         printf("ERROR: Invalid face token! '%s'", text);
     }
-}
+}*/
 
 int count_face_delimiters(const char* text)
 {
@@ -415,7 +417,7 @@ int is_valid_triangle(const struct Triangle* triangle, const struct Model* model
     return TRUE;
 }
 
-int is_valid_quad(const struct Quad* quad, const struct Model* model)
+/*int is_valid_quad(const struct Quad* quad, const struct Model* model)
 {
     int k;
     int vertex_index, texture_index, normal_index;
@@ -439,7 +441,7 @@ int is_valid_quad(const struct Quad* quad, const struct Model* model)
     }
     return TRUE;
 }
-
+*/
 void print_bounding_box(const struct Model* model)
 {
     int i;
@@ -501,23 +503,28 @@ void scale_model(struct Model* model, double sx, double sy, double sz)
 void init_entities(World* world) {
 	
 	//Bird
-	load_model("objects//bird.obj", &world->bird.model);
+	//load_model("objects//bird.obj", &world->bird.model);
+	load_model(&(world->bird), "objects//bird.obj");
     
 	//Duckling
-    load_model("objects//duckling.obj", &world->duckling.model);
+    //load_model("objects//duckling.obj", &world->duckling.model);
+	load_model(&(world->duckling), "objects//duckling.obj");
 	world->duckling.texture = load_texture("textures//duckling.jpg");
 
 	
 	//Mallard
-	load_model("objects//mallard.obj", &world->mallard.model);
+	//load_model("objects//mallard.obj", &world->mallard.model);
+	load_model(&(world->mallard), "objects//mallard.obj");
 	world->mallard.texture = load_texture("textures//mallard.jpg");
 	
 	//Deer
-	load_model("objects//deer.obj", &world->deer.model);
+	//load_model("objects//deer.obj", &world->deer.model);
+	load_model(&(world->deer), "objects//deer.obj");
 	world->deer.texture = load_texture("textures//deer.jpg");
 	
 	//Fox
-	load_model("objects//fox.obj", &world->fox.model);
+	//load_model("objects//fox.obj", &world->fox.model);
+	load_model(&(world->fox), "objects//fox.obj");
 	world->fox.texture = load_texture("textures//fox.jpg");
 	
 	//Ground

@@ -78,12 +78,12 @@ void update_camera_position(struct Camera* camera, double elapsed_time)
 
 	if (action.increase_light == TRUE) {
 		if (light_ambient[0] < 1)
-			light_ambient[0] = light_ambient[1] = light_ambient[2] += 0.1;
+			light_ambient[0] = light_ambient[1] = light_ambient[2] += 0.01;
 	}
 
 	if (action.decrease_light == TRUE) {
-		if (light_ambient[0] > -0.51)
-			light_ambient[0] = light_ambient[1] = light_ambient[2] -= 0.1;
+		if (light_ambient[0] > -0.5)
+			light_ambient[0] = light_ambient[1] = light_ambient[2] -= 0.01;
 	}
 
 }
