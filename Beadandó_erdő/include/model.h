@@ -9,6 +9,9 @@
 #define TRUE 1
 #define FALSE 0
 #define INVALID_VERTEX_INDEX 0
+#include <obj/load.h>
+
+
 
 struct TokenArray
 {
@@ -16,37 +19,37 @@ struct TokenArray
 	int n_tokens;
 };
 
-struct Vertex
+/*struct Vertex
 {
     double x;
     double y;
     double z;
-};
+};*/
 
-struct TextureVertex
+/*struct TextureVertex
 {
     double u;
     double v;
-};
+};*/
 
-struct FacePoint
+/*struct FacePoint
 {
     int vertex_index;
     int texture_index;
     int normal_index;
-};
+};*/
 
-struct Triangle
+/*struct Triangle
 {
     struct FacePoint points[3];
-};
+};*/
 
-struct Quad
+/*struct Quad
 {
     struct FacePoint points[4];
-};
+};*/
 
-typedef struct Model
+/*typedef struct Model
 {
     int n_vertices;
     int n_texture_vertices;
@@ -58,7 +61,7 @@ typedef struct Model
     struct Vertex* normals;
     struct Triangle* triangles;
     struct Quad* quads;
-}Model;
+}Model;*/
 
 typedef struct {
     Model model;
@@ -79,12 +82,6 @@ typedef struct {
 	Entity mallard;
 	Entity deer;
 	Entity fox;
-	Entity tree1;
-	Entity tree2;
-	Entity tree3;
-	Entity tree4;
-	Entity tree5;
-	Entity tree6;
 	double bird_speed;
     
 
@@ -123,32 +120,32 @@ void free_tokens(struct TokenArray* token_array);
 /**
  * Load OBJ model from file.
  */
-int load_model(const char* filename, struct Model* model);
+//int load_model(const char* filename, struct Model* model);
 
 /**
  * Print the information about the loaded model.
  */
-void print_model_info(const struct Model* model);
+//void print_model_info(const struct Model* model);
 
 /**
  * Release the allocated memory of the model.
  */
-void free_model(struct Model* model);
+//void free_model(struct Model* model);
 
 /**
  * Count the elements in the model and set counts in the structure.
  */
-void count_elements(FILE* file, struct Model* model);
+//void count_elements(FILE* file, struct Model* model);
 
 /**
  * Read the elements of the model and fill the structure with values.
  */
-void read_elements(FILE* file, struct Model* model);
+//void read_elements(FILE* file, struct Model* model);
 
 /**
  * Initializes model counters to zero.
  */
-void init_model_counters(struct Model* model);
+//void init_model_counters(struct Model* model);
 
 /**
  * Clear the comment from the end of the line.
@@ -158,12 +155,12 @@ void clear_comment(char* line);
 /**
  * Determine the type of the line and increment the appropriate counter.
  */
-void count_element_in_line(const char* line, struct Model* model);
+//void count_element_in_line(const char* line, struct Model* model);
 
 /**
  * Read the given data from the line.
  */
-void read_element_from_line(const char* line, struct Model* model);
+//void read_element_from_line(const char* line, struct Model* model);
 
 /**
  * Allocate memory for the model.
@@ -171,37 +168,37 @@ void read_element_from_line(const char* line, struct Model* model);
  * The OBJ file format starts indices from 1. From this reason,
  * the vertices, texture vertices and normals have a blank 0 element.
  */
-void create_arrays(struct Model* model);
+//void create_arrays(struct Model* model);
 
 /**
  * Read vertex data.
  */
-void read_vertex(const struct TokenArray* token_array, struct Vertex* vertex);
+//void read_vertex(const struct TokenArray* token_array, struct Vertex* vertex);
 
 /**
  * Read texture vertex data.
  */
-void read_texture_vertex(const struct TokenArray* token_array, struct TextureVertex* texture_vertex);
+//void read_texture_vertex(const struct TokenArray* token_array, struct TextureVertex* texture_vertex);
 
 /**
  * Read normal vector data.
  */
-void read_normal(const struct TokenArray* token_array, struct Vertex* normal);
+//void read_normal(const struct TokenArray* token_array, struct Vertex* normal);
 
 /**
  * Read triangle data.
  */
-void read_triangle(const struct TokenArray* token_array, struct Triangle* triangle);
+//void read_triangle(const struct TokenArray* token_array, struct Triangle* triangle);
 
 /**
  * Read quad data.
  */
-void read_quad(const struct TokenArray* token_array, struct Quad* quad);
+//void read_quad(const struct TokenArray* token_array, struct Quad* quad);
 
 /**
  * Read face point data.
  */
-void read_face_point(const char* text, struct FacePoint* face_point);
+//void read_face_point(const char* text, struct FacePoint* face_point);
 
 /**
  * Count the delimiters in the face token.
@@ -223,12 +220,12 @@ int is_digit(char c);
 /**
  * Check that the indices in the triangle are valid.
  */
-int is_valid_triangle(const struct Triangle* triangle, const struct Model* model);
+//int is_valid_triangle(const struct Triangle* triangle, const struct Model* model);
 
 /**
  * Check that the indices in the quad are valid.
  */
-int is_valid_quad(const struct Quad* quad, const struct Model* model);
+//int is_valid_quad(const struct Quad* quad, const struct Model* model);
 
 /**
  * Print the bounding box of the model.

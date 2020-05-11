@@ -19,12 +19,12 @@ typedef struct {
 /**
 * Draw the model.
 */
-void draw_model(const struct Model* model);
+//void draw_model(const struct Model* model);
 
 /**
 * Draw the triangles of the model.
 */
-void draw_triangles(const struct Model* model);
+//void draw_triangles(const struct Model* model);
 
 /**
 * Draws the ground
@@ -67,7 +67,7 @@ void draw_environment(World world, Rotate* rotate);
 void load_skybox(Skybox* skybox);
 
 /**
-* Calls draw_windmills and draw_teapot_for_light
+* Calls draw_entities
 */
 void draw_entities(World world);
 
